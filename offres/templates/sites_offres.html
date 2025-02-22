@@ -23,6 +23,30 @@
         <br><br><br><br><br><br>
         <label for="description">Décris toi:<span class="red_star"> *</span></label><br>
             <input type="text" id="description" required minlength="100" maxlength="800" size="70" name="description"/><br><br>
+        <fieldset>
+            <legend>Qu'est ce qui te représente le mieux:</legend>
+
+            <div>
+                <input type="radio" id="landscape" checked/>
+                <label for="landscape">Le voyage</label>
+            </div>
+            <div>
+                <input type="radio" id="car"/>
+                <label for="car">Les voitures</label>
+            </div>
+        </fieldset><br>
+        <label for="first_name">Quel est ton language primaire :<span
+                class="red_star"> *</span></label><br><br>
+        <select name="main_language" id="main_language" required>
+            <option value="">--Choisir une option--</option>
+            <option value="french">Français</option>
+            <option value="english">Anglais</option>
+            <option value="spanish">Espagnol</option>
+            <option value="german">Allemand</option>
+        </select><br>
+        <fieldset>
+        <legend>Quels sont tes autres languages:</legend>
+    </fieldset><br>
         <button type="submit">Envoyer</button>
     </form>
 </body>

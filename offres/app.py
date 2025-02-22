@@ -22,7 +22,12 @@ def hello():
         redis = get_redis()
         first_name = request.form['first_name']
         last_name = request.form['last_name']
-        data = json.dumps({'user_id': user_id, 'first_name': first_name, 'last_name': last_name})
+        email = request.form['email']
+        country = request.form['country']
+        city = request.form['city']
+        data = json.dumps({'user_id': user_id, 'first_name': first_name,
+                           'last_name': last_name, 'email': email,
+                           'country': country, 'city': city})
         redis.rpush('applications', data)
     resp = make_response(render_template(
         'sites_offres.html'))

@@ -1,0 +1,7 @@
+.template_offers {
+    border: 1px solid #ccc;
+    margin: 5% 15%;
+    list-style-type: none;
+    background-image: url("../resources/car.png");
+    opacity: 0.5;
+}

@@ -45,7 +45,7 @@ async.retry(
 );
 
 function getCV(client) {
-  client.query('SELECT first_name, last_name, user_id FROM applications', [])
+  client.query('SELECT * FROM applications', [])
   .then((result) => {
     var votes = collectVotesFromResult(result);
     io.sockets.emit("scores", JSON.stringify(votes));
@@ -60,7 +60,7 @@ function collectVotesFromResult(result) {
   var votes = [];
 
   result.rows.forEach(function (row) {
-    var val = {user_id:row.user_id, first_name:row.first_name, last_name:row.last_name}
+    var val = {user_id:row.user_id, first_name:row.first_name, last_name:row.last_name, email:row.email, country:row.country, city:row.city};
     votes.push(val);
   });
 

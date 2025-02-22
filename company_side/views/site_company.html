@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="poll-app">
+<link href="static/style.css" rel="stylesheet"/>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Company size</title>
 </head>
     <body ng-controller="appCtrl">
     <ul>
-        <li ng-repeat="item in data">
-            {{item.user_id}}: {{item.first_name}} {{item.last_name}}
+        <li ng-repeat="item in data" class="template_offers">
+            Pays: {{item.country}}<br>Ville: {{item.city}}
         </li>
     </ul>
 

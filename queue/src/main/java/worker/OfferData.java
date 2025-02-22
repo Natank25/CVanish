@@ -1,13 +1,17 @@
 package worker;
 
 import java.util.List;
+import java.util.Arrays;
 
 public enum OfferData {
 
 
     USER_ID("user_id"),
     FIRST_NAME("first_name"),
-    LAST_NAME("last_name");
+    LAST_NAME("last_name"),
+    EMAIL("email"),
+    COUNTRY("country"),
+    CITY("city");
     final String label;
 
     OfferData(String str){
@@ -18,6 +22,6 @@ public enum OfferData {
         return this.label;
     }
 
-
-    public static final List<OfferData> DB_COLUMNS = List.of(USER_ID, FIRST_NAME, LAST_NAME);
+    public static final List<OfferData> DB_COLUMNS = Arrays.stream(values())
+    .toList();
 }
