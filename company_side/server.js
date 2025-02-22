@@ -60,7 +60,8 @@ function collectVotesFromResult(result) {
   var votes = [];
 
   result.rows.forEach(function (row) {
-    votes.concat({user_id:row.user_id, first_name:row.first_name, last_name:row.last_name});
+    var val = {user_id:row.user_id, first_name:row.first_name, last_name:row.last_name}
+    votes.push(val);
   });
 
   return votes;

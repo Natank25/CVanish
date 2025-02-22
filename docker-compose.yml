@@ -20,7 +20,7 @@ services:
   db:
     image: postgres:16
     env_file:
-      - "result/.env"
+      - "company_side/.env"
     volumes:
       - ${PWD}/schema.sql:/docker-entrypoint-initdb.d/init.sql
       - db-data:/var/lib/postgresql/data/
@@ -31,13 +31,24 @@ services:
   queue:
     build: queue
     env_file:
-      - "result/.env"
+      - "company_side/.env"
       - "offres/.env"
     depends_on:
       - db
       - redis
     networks:
       - back-tier
+    restart: always
+  company:
+    build: company_side
+    ports:
+      - "5001:80"
+    env_file:
+      - "company_side/.env"
+    depends_on:
+      - db
+    networks:
+      - jobs-tier
     restart: always
 
 networks:

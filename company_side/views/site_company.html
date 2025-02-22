@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="poll-app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <body ng-controller="appCtrl">
+    <ul>
+        <li ng-repeat="item in data">
+            {{item.user_id}}: {{item.first_name}} {{item.last_name}}
+        </li>
+    </ul>
+
+    <script src="socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="app.js"></script>
+    </body>
+</html>
