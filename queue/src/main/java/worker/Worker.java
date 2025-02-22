@@ -16,12 +16,9 @@ class Worker {
       while (true) {
         String voteJSON = redis.blpop(0, "applications").get(1);
         JSONObject voteData = new JSONObject(voteJSON);
-        String user_id = voteData.getString("user_id");
-        String first_name = voteData.getString("first_name");
-        String last_name = voteData.getString("last_name");
-
-        System.err.printf("Processing application by '%s' '%s'\n", first_name, last_name);
-        updateVote(dbConn, user_id, first_name, last_name);
+        InputOffer offer = InputOffer.createFromJson(voteData);
+        System.err.printf("Processing application of '%s' '%s'\n", offer.data.get(OfferData.LAST_NAME), offer.data.get(OfferData.FIRST_NAME));
+        updateVote(dbConn, offer);
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -29,19 +26,13 @@ class Worker {
     }
   }
 
-  static void updateVote(Connection dbConn, String user_id, String first_name, String last_name) throws SQLException {
-    PreparedStatement insert = dbConn.prepareStatement("INSERT INTO applications (user_id, first_name, last_name) VALUES (?, ?, ?)");
-    insert.setString(1, user_id);
-    insert.setString(2, first_name);
-    insert.setString(3, last_name);
+  static void updateVote(Connection dbConn, InputOffer offer) throws SQLException {
+    PreparedStatement insert = dbConn.prepareStatement(offer.createInsertStatement());
 
     try {
       insert.executeUpdate();
     } catch (SQLException e) {
-      PreparedStatement update = dbConn.prepareStatement("UPDATE applications SET first_name = ?, last_name = ? WHERE id = ?");
-      update.setString(1, first_name);
-      update.setString(2, last_name);
-      update.setString(3, user_id);
+      PreparedStatement update = dbConn.prepareStatement(offer.createUpdateStatement());
       update.executeUpdate();
     }
   }
