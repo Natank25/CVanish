@@ -5,7 +5,6 @@ import socket
 import random
 import json
 
-hostname = socket.gethostname()
 
 app = Flask(__name__)
 

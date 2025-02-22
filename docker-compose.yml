@@ -1,0 +1,49 @@
+services:
+  recruitee:
+    build: offres
+    ports:
+      - "5000:80"
+    depends_on:
+      - redis
+    env_file:
+      - "offres/.env"
+    networks:
+      - application-tier
+  redis:
+    image: redis:7
+    expose:
+      - "6379"
+    restart: always
+    networks:
+      - application-tier
+      - back-tier
+  db:
+    image: postgres:16
+    env_file:
+      - "result/.env"
+    volumes:
+      - ${PWD}/schema.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/postgresql/data/
+    networks:
+      - jobs-tier
+      - back-tier
+    restart: always
+  queue:
+    build: queue
+    env_file:
+      - "result/.env"
+      - "offres/.env"
+    depends_on:
+      - db
+      - redis
+    networks:
+      - back-tier
+    restart: always
+
+networks:
+  application-tier:
+  jobs-tier:
+  back-tier:
+
+volumes:
+  db-data:
