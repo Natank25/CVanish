@@ -3,12 +3,16 @@
 <link href="static/style.css" rel="stylesheet"/>
 <head>
     <meta charset="UTF-8">
-    <title>Company size</title>
+    <title>Company side</title>
 </head>
     <body ng-controller="appCtrl">
     <ul>
         <li ng-repeat="item in data" class="template_offers">
-            Pays: {{item.country}}<br>Ville: {{item.city}}
+            <div class="data_container">
+                Poste recherché: Data Scientist<br>
+                Compétences: {{item.country}}<br>
+                Personalité: Ouvert d’esprit, motivé, compétitif<br>
+            </div>
         </li>
     </ul>
 
