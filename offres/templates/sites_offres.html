@@ -6,6 +6,7 @@
     <title>Créer un profile</title>
 </head>
 <body>
+ <div class="content">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css">
     <script src="https://cdn.jsdelivr.net/npm/tom-select"></script>
     <form id="choice" name='form' method="POST" action="/">
@@ -15,12 +16,10 @@
             <input type="text" id="last_name" required size="20" name="last_name"/><br><br>
         <label for="email"><span class="red_star">* </span>Adresse mail :</label><br>
             <input type="email" id="email" required size="20" name="email"/><br><br>
-        <p>Ta localisation:</p>
-        <label for="country"><span class="red_star">* </span>Lieu :</label><br>
+        <label for="country"><span class="red_star">* </span>Lieu : (Ville, Pays)</label><br>
             <input type="text" id="country" required size="20" name="country"/><br><br>
-        <br><br><br><br><br><br>
         <label for="skills_select">Sélectionnez vos compétences:</label><br>
-        <select id="skills_select" multiple>
+        <select id="skills_select" multiple style="margin: 0 0 0 70%">
             <option value="group_work">Travail d'équipe</option>
             <option value="project_management">Gestion de projet</option>
             <option value="self_learning">Autonomie</option>
@@ -35,7 +34,7 @@
             Décrivez une image pour générer votre icône sur mesure...
         </label><br>
         <input type="text" id="ia_icon_prompt" required size=""><br><br>
-        <fieldset>
+        <fieldset style="max-width: 40%">
             <label for="secondary_language">Deuxième langue :</label><br>
             <select name="secondary_language" id="secondary_language" required>
             <option value="">--Choisir une option--</option>
@@ -69,6 +68,7 @@
         <input type="text" id="description" required minlength="50" maxlength="800" size="70" name="description"/><br><br>
         <button type="submit">Envoyer</button>
     </form>
+ </div>
     <script>
         new TomSelect("#skills_select", {
             plugins: ['remove_button'], // Allows users to remove selections

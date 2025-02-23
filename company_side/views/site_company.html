@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <title>Company side</title>
 </head>
-    <body ng-controller="appCtrl">
-    <ul>
+<body ng-controller="appCtrl">
+    <div class="header">
+        <h2>Résultats pour : Développeur Back-End</h2>
+    </div>
+    <ol>
         <li ng-repeat="item in data" class="template_offers">
             <div class="data_container">
                 Poste recherché: Data Scientist<br>
@@ -14,10 +17,10 @@
                 Personalité: Ouvert d’esprit, motivé, compétitif<br>
             </div>
         </li>
-    </ul>
+    </ol>
 
     <script src="socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="app.js"></script>
-    </body>
+</body>
 </html>

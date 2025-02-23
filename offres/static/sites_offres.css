@@ -11,6 +11,12 @@
     min-height: 5em;
 }
 
+.content {
+    margin: 2% 20% 2% 20%;
+    display: flex;
+    justify-content: center;
+}
+
 :root[data-theme="light"] {
     --text-50: #f8ecec;
     --text-100: #f1dada;
